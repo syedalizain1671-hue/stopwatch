@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap");
+
+:root {
+    --bg: #0e1218;
+    --panel: #161c26;
+    --panel-edge: #263040;
+    --text: #eef1f6;
+    --muted: #8793a6;
+    --start: #2fbf8f;
+    --start-hover: #43d3a2;
+    --stop: #ef6a5b;
+    --stop-hover: #f48073;
+    --reset-hover: #212a38;
+    --lap: #5b8def;
+    --lap-hover: #7aa3f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.outer_container {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.container {
+    width: min(100%, 460px);
+    padding: 36px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    background-color: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-top: 3px solid var(--start);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.container h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.stopwatch {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+/* ---- Timer display ---- */
+.timer {
+    font-size: clamp(2.4rem, 11vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.timer span {
+    display: inline-block;
+    width: 1.3em;
+    text-align: center;
+    color: var(--text);
+}
+
+.timer .seconds {
+    color: var(--start);
+}
+
+/* ---- Buttons ---- */
+.controllers {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.controllers button {
+    flex: 1;
+    padding: 13px 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--bg);
+    background-color: var(--start);
+    border: 1.5px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease, color 0.15s ease;
+}
+
+.controllers button:active {
+    transform: scale(0.97);
+}
+
+.controllers button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+}
+
+.controllers .start {
+    background-color: var(--start);
+}
+
+.controllers .start:hover {
+    background-color: var(--start-hover);
+}
+
+.controllers .stop {
+    background-color: var(--stop);
+}
+
+.controllers .stop:hover {
+    background-color: var(--stop-hover);
+}
+
+.controllers .lap {
+    background-color: var(--lap);
+}
+
+.controllers .lap:hover {
+    background-color: var(--lap-hover);
+}
+
+.controllers .reset {
+    background-color: transparent;
+    color: var(--text);
+    border-color: var(--panel-edge);
+}
+
+.controllers .reset:hover {
+    background-color: var(--reset-hover);
+    border-color: var(--muted);
+}
+
+/* ---- Lap list container ---- */
+.lapper {
+    width: 100%;
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-align: center;
+    background-color: var(--bg);
+    border: 1px solid var(--panel-edge);
+    border-radius: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Thin scrollbar (Chrome, Edge, Safari) */
+.lapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lapper::-webkit-scrollbar-thumb {
+    background-color: var(--panel-edge);
+    border-radius: 6px;
+}
+
+/* Thin scrollbar (Firefox) */
+.lapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--panel-edge) transparent;
+}
+
+/* ---- Footer ---- */
+.footer {
+    padding: 22px 16px 26px;
+    text-align: center;
+    border-top: 1px solid var(--panel-edge);
+    background-color: var(--panel);
+}
+
+.footer-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.footer-text {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.footer-journey {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--start);
+}
+
+.footer-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--panel-edge);
+    border-radius: 999px;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.footer-link:hover {
+    background-color: var(--reset-hover);
+    border-color: var(--muted);
+}
+
+.footer-link:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+}
+
+/* ---- Tablet / small laptop ---- */
+@media screen and (max-width: 768px) {
+    .container {
+        width: min(100%, 420px);
+    }
+}
+
+/* ---- Mobile ---- */
+@media screen and (max-width: 480px) {
+    .outer_container {
+        padding: 12px;
+    }
+
+    .container {
+        padding: 28px 18px 24px;
+        gap: 22px;
+        border-radius: 16px;
+    }
+
+    .container h1 {
+        font-size: 1rem;
+    }
+
+    .stopwatch {
+        gap: 26px;
+    }
+
+    .timer span {
+        width: 1.25em;
+    }
+
+    .controllers {
+        gap: 8px;
+    }
+
+    .controllers button {
+        padding: 12px 6px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+
+    .lapper {
+    max-height: 150px;
+    padding: 12px;
+    font-size: 0.9rem;
+}
+
+
+}
+
+/* ---- Very small phones ---- */
+@media screen and (max-width: 360px) {
+    .container {
+        padding: 24px 14px 20px;
+    }
+
+    .controllers button {
+        font-size: 0.88rem;
+    }
+}
+
+/* ---- Landscape phones (short screens) ---- */
+@media screen and (max-height: 480px) {
+    .container {
+        gap: 14px;
+        padding: 18px 20px;
+    }
+
+    .stopwatch {
+        gap: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .controllers button {
+        transition: none;
+    }
+}
